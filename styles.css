@@ -17,9 +17,9 @@ main{
     width:100%;
     margin:5rem 0;
 }
-h1,p{
+h1,h2,p{
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 p{
     font-size:16px;
@@ -53,3 +53,4 @@ h3{
 input[type="radio"]{
     margin-right:7px;
 }
+

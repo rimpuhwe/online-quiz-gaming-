@@ -1,7 +1,8 @@
 const input = document.getElementById('name');
 const welcomeDiv =document.getElementById('welcome');
 const quizDiv = document.getElementById('quizzes'); 
-const testDiv = document.getElementById('quiz-content'); 
+const testDiv = document.getElementById('quiz-content');
+const results = document.getElementById('results'); 
 
 
 input.addEventListener('keydown',(event)=>{
@@ -58,8 +59,21 @@ async function showquiz(){
         })
         const resultButton = document.createElement('button');
         resultButton.textContent = 'Show Result';
-        resultButton.style.cssText = 'background-color:#9eae9e; color: #000; padding: 7px; font-size: 14px; border:1px solid transparent; margin:10px auto;';
+        resultButton.style.cssText = 'background-color:#9eae9e; color: #000; padding: 7px; font-size: 14px; border:1px solid transparent; margin:1rem 10rem;';
         testDiv.appendChild(resultButton);
+        resultButton.addEventListener('click',()=>{
+            testDiv.style.display = 'none';
+            const resultDiv = document.createElement('div');
+            resultDiv.classList.add('result');
+            document.getElementById('title').innerText = 'Results'
+            resultDiv.innerHTML = `
+            <h2>${input.value},You have completed the quiz!</h2>
+            <p>Total Questions: ${data.results.length}</p>
+            <p>Total Correct Answers: ${data.results.filter((question,index) => question.correct_answer === document.querySelector(`input[name='question${index+1}']:checked`).value).length}</p>
+            <p><b>Your score: ${data.results.filter((question,index) => question.correct_answer === document.querySelector(`input[name='question${index+1}']:checked`).value).length * 2}/${data.results.length * 2};
+            `;
+            results.appendChild(resultDiv);
+        })
         
     }
     catch (error) {
