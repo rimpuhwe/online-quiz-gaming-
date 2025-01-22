@@ -8,7 +8,9 @@ body{
     width:100%;
 }
 main{
-    border:1px solid red;
+    border:1px solid transparent;
+    box-shadow: 2px 1px 3px 2px #e7e6e7;
+    border-radius:7px;
     width:80%;
     margin:20px auto;
     padding:20px;

@@ -14,8 +14,7 @@ input.addEventListener('keydown',(event)=>{
         else{
         welcomeDiv.style.display = 'none';
         quizDiv.style.display = 'block';
-        showquiz();
-        input.value = '';
+        showquiz(); 
         }
     }   
 });
@@ -70,9 +69,10 @@ async function showquiz(){
             <h2>${input.value},You have completed the quiz!</h2>
             <p>Total Questions: ${data.results.length}</p>
             <p>Total Correct Answers: ${data.results.filter((question,index) => question.correct_answer === document.querySelector(`input[name='question${index+1}']:checked`).value).length}</p>
-            <p><b>Your score: ${data.results.filter((question,index) => question.correct_answer === document.querySelector(`input[name='question${index+1}']:checked`).value).length * 2}/${data.results.length * 2};
+            <p><b>Your score: ${data.results.filter((question,index) => question.correct_answer === document.querySelector(`input[name='question${index+1}']:checked`).value).length * 2}/${data.results.length * 2}
             `;
             results.appendChild(resultDiv);
+            input.value = '';
         })
         
     }
